@@ -1,3 +1,4 @@
+from functools import reduce
 COLORS = ["red", "green", "blue"]
 
 def get_game_id(line):
@@ -36,8 +37,8 @@ def valid_draws(draws, bag_contents):
     return True
 
 if __name__ == "__main__":
-    bag_contents = [13, 14, 15]
-    # file_path = "Wouter/day_2_input_1.txt"
+    bag_contents = [12, 13, 14]
+    # file_path = "Wouter/day_2_input_test.txt"
     file_path = "Wouter/day_2_input_final.txt"
 
     print(f"bag_contents : {bag_contents}")
@@ -45,18 +46,32 @@ if __name__ == "__main__":
     # Open file
     with open(file_path, "r") as f:
         sum = 0
+        sum2 = 0
         # for each line
         while(line:=f.readline().strip()):
             print(line)
             game_id = get_game_id(line)
             draws = get_draws(line)
             print(draws)
+
+            # For part 1
             if valid_draws(draws, bag_contents):
                 sum += game_id
                 print("valid")
             else:
                 print("invalid")
+
+            # For part 2
+            # Check minimum number of cubes of each color (as max number of cubes drawn)
+            min_draws = [0, 0, 0]
+            for draw in draws:
+                for i in range(len(draw)):
+                    min_draws[i] = max(min_draws[i], draw[i])
+
+            # multiply them, and add to sum
+            sum2 += reduce(lambda x, y: x*y, min_draws)
         print(f"sum of valid game ids : {sum}")
+        print(f"sum of product of minimal number of cubes of each color, for each game : {sum2}")
 
 
             
