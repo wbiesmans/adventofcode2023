@@ -6,20 +6,25 @@ def get_game_id(line):
     return int(line.split(":")[0].split(" ")[1])
 
 def get_draws(line):
-    """ Returns list of draws as list of list of integers"""
-    # split line on semicolon
+    """ Returns list of draws as list of list of integers,
+        in order of colors in COLORS
+    """
+    # select all text after colon, split on semicolon
     draws_text = line.split(":")[1].split(";")
     draws_int = []
+    # for each draw
     for draw_text in draws_text:
         # split draw on comma
         draw_percolor = draw_text.strip().split(",")
         draw_int = [0, 0, 0]
         for color_draw in draw_percolor:
-            # Get color and number
+            # Get color and number, convert to integer
             color = color_draw.strip().split(" ")[1]
             number = int(color_draw.strip().split(" ")[0])
+            # put the number in the right place in the list            
             color_index = COLORS.index(color)
             draw_int[color_index] = number
+        # add draw to list of draws
         draws_int.append(draw_int)
     return draws_int
 
