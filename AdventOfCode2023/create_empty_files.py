@@ -1,6 +1,6 @@
 if __name__  == "__main__":
     person = "Wouter"  # Used as subfolder name
-    days = range(2, 5) # Days to create files for. E.g. range(1, 26) for all days
+    days = range(4,5) # Days to create files for. E.g. range(1, 26) for all days
     extension = ".py"
 
     for day in days:
@@ -11,9 +11,7 @@ if __name__  == "__main__":
             pass
 
         # create empty input files
-        with open(f"{person}\day_{day}_input_1.txt", "w") as f:
-            pass
-        with open(f"{person}\day_{day}_input_2.txt", "w") as f:
+        with open(f"{person}\day_{day}_input_test.txt", "w") as f:
             pass
         with open(f"{person}\day_{day}_input_final.txt", "w") as f:
             pass

@@ -1,6 +1,6 @@
 if __name__ == "__main__":
     # open file
-    with open("input.txt", "r") as f:
+    with open("Wouter/day_1_input_final.txt", "r") as f:
         sum = 0
         digits = [str(i) for i in range(10)]
         # loop over lines in file
