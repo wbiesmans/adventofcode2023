@@ -40,7 +40,6 @@ class Mapping():
             total_range += range
         return total_range
 
-
     def map_ranges(self, input_ranges):
         """ranges = list of (start, length) tuples"""
         sum_input_ranges = self.count_total_range(input_ranges)
@@ -85,7 +84,7 @@ class Mapping():
             total_output_ranges = total_output_ranges + output_ranges
 
         sum_output_range = self.count_total_range(total_output_ranges)
-        assert sum_output_range == sum_input_ranges, f"sum_output_range ({sum_output_range}) != sum_range ({sum_range})"
+        assert sum_output_range == sum_input_ranges
         return total_output_ranges
 
     def __repr__(self):

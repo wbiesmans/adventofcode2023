@@ -1,5 +1,3 @@
-import numpy as np
-
 class Mapping():
     def __init__(self, input_lines):
         self.input = input_lines
@@ -34,6 +32,7 @@ class Mapping():
     def __repr__(self):
         return f"Mapping from {self._from} to {self._to}"
 
+
 class ChainOfMappings():
     def __init__(self):
         self.mappings = []
@@ -51,6 +50,7 @@ class ChainOfMappings():
 
     def __repr__(self):
         return f"Chain of mappings: {self.mappings}"
+
 
 if __name__ == "__main__":
     with open("Wouter/day_5_input_final.txt", "r") as f:
