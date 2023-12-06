@@ -1,0 +1,39 @@
+from functools import reduce
+time, distance = open('day 6 input.txt').read().split('\n')
+time, distance = list(map(int, time.split(':')[1].split())), list(map(int, distance.split(':')[1].split()))
+# part 1
+ways2win = []
+
+for i, tim in enumerate(time):
+    c = 0
+    hold = 0
+
+    while tim > 0:
+        if hold * tim >= distance[i]:  
+            c += 1
+        hold += 1
+        tim -= 1
+
+    ways2win.append(c)
+total = 1
+for way in ways2win:
+    total *= way
+print(total)
+
+#day2
+
+tim, distan =  int(''.join(map(str, time))), int(''.join(map(str, distance)))
+
+    
+c = 0
+hold = 0
+
+while tim > 0:
+    if hold * tim > distan:  # Check if the calculated distance is greater than or equal to the given distance
+        c += 1
+    hold += 1
+    tim -= 1
+
+print(c)
+        
+        
