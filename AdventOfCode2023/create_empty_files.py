@@ -1,6 +1,6 @@
 if __name__  == "__main__":
     person = "Wouter"  # Used as subfolder name
-    days = range(6,7) # Days to create files for. E.g. range(1, 26) for all days
+    days = range(7,8) # Days to create files for. E.g. range(1, 26) for all days
     extension = ".py"
 
     for day in days:
