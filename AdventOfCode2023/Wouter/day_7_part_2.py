@@ -18,7 +18,7 @@ def get_hand_value(hand):
     # Assign value to each hand
     card_type_counts = []
     for card_type in order:
-        # Count the number of cards in the hand
+        # Count the number of cards of each type in the hand
         card_type_counts.append(hand.count(card_type))
 
     # Handle jokers (add them everywhere):
@@ -32,25 +32,26 @@ def get_hand_value(hand):
     if num_jokers == 0:
         is_full_house = num_of_a_kind == 3 and 2 in card_type_counts
     elif num_jokers == 1:
-        is_full_house = num_of_a_kind == 3 and card_type_counts.count(3) >= 2  # two pairs before joker
+        is_full_house = num_of_a_kind == 3 and card_type_counts.count(3) == 2  # two pairs before joker
     elif num_jokers == 2:  # We can make at least four of a kind instead of a full house
         is_full_house = False
 
-    # is_two_pair = num_of_a_kind == 2 and card_counts.count(2) >= 2
+    if num_jokers == 0:
+        is_two_pair = num_of_a_kind == 2 and card_type_counts.count(2) == 2
+    elif num_jokers == 1:
+        is_two_pair = [] # Should not be possible 
 
     # Reverse the order of checks
     if num_of_a_kind >= 5:
         primary_hand_value = 6
-        print(f"Five of a kind: {hand}")
     elif num_of_a_kind == 4:
         primary_hand_value = 5
-        print(f"Four of a kind: {hand}")
     elif is_full_house:
         primary_hand_value = 4
-        print(f"Full house: {hand}")
     elif num_of_a_kind == 3:
         primary_hand_value = 3
-        print(f"Three of a kind: {hand}")
+    elif is_two_pair:
+        primary_hand_value = 2
     elif num_of_a_kind == 2:
         primary_hand_value = 1
     elif num_of_a_kind == 1:
@@ -86,7 +87,7 @@ if __name__ == "__main__":
     rank = range(1, len(ordered_hands)+1)
     score = 0
     for rank, bid in zip(rank, ordered_bids):
-        score += rank*bid
+            score += rank*bid
     print(score)
 
 
