@@ -193,8 +193,8 @@ for y in range(grid_height):
                 grid[x,y] = 'I'
             elif boundaries_count % 2 == 0:
                 grid[x,y] = 'O'
-custom_print(grid)
-custom_print(grid_mask)
+# custom_print(grid)
+# custom_print(grid_mask)
 print(f"Total count: {inside_tiles_count}")
 
 
